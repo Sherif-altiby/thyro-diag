@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import authRoutes from './routes/doctor.route.js';
 import { errorHandler } from './middlewares/error.middleware.js';
+import dashboardRoutes from "./routes/dashboard.route.js"
 
 const app = express();
 
@@ -11,7 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
+app.use('/', (req, res) => {
+    res.json({
+        message: "That is base URL"
+    });
+});
 
 // 404
 app.use((req, res) => {
