@@ -4,6 +4,8 @@ import express from 'express';
 import authRoutes from './routes/doctor.route.js';
 import { errorHandler } from './middlewares/error.middleware.js';
 import dashboardRoutes from "./routes/dashboard.route.js"
+import patientRoutes from './routes/patient.route.js';
+
 
 const app = express();
 
@@ -13,6 +15,8 @@ app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/patients', patientRoutes);
+
 
 app.use('/', (req, res) => {
     res.json({
