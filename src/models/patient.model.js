@@ -41,9 +41,8 @@ const patientSchema = new mongoose.Schema(
 );
 
 // Auto-exclude soft-deleted patients
-patientSchema.pre(/^find/, function (next) {
+patientSchema.pre(/^find/, function () {
   if (!this.getQuery().includeDeleted) this.where({ deletedAt: null });
-  next();
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

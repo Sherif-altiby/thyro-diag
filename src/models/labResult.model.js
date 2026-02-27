@@ -37,13 +37,12 @@ const labResultSchema = new mongoose.Schema(
 );
 
 // Auto-compute status labels before saving
-labResultSchema.pre('save', function (next) {
+labResultSchema.pre('save', function () {
   const calc = (val, lo, hi) => val == null ? null : val < lo ? 'low' : val > hi ? 'high' : 'normal';
   this.tsh.status     = calc(this.tsh.value,     0.4,  4.0);
   this.freeT4.status  = calc(this.freeT4.value,  0.8,  1.8);
   this.freeT3.status  = calc(this.freeT3.value,  2.3,  4.2);
   this.totalT3.status = calc(this.totalT3.value, 80,   200);
-  next();
 });
 
 // Index for trend chart queries (sorted by date per patient)

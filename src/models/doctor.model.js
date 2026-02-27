@@ -9,12 +9,12 @@ const doctorSchema = new mongoose.Schema(
     fullName:     { type: String, required: true, trim: true },
     email:        { type: String, required: true, unique: true, lowercase: true, trim: true },
     passwordHash: { type: String, required: true, select: false },
-    certifications: { type: String, default: null }, // الشهادات والمؤهلات الطبية
+    certifications: { type: String, default: null },  
 
     settings: {
-      notificationsEnabled: { type: Boolean, default: true },  // الإشعارات
-      darkModeEnabled:      { type: Boolean, default: false },  // الوضع الليلي
-      language:             { type: String, enum: ['ar', 'en'], default: 'ar' }, // اللغة
+      notificationsEnabled: { type: Boolean, default: true },  
+      darkModeEnabled:      { type: Boolean, default: false },  
+      language:             { type: String, enum: ['ar', 'en'], default: 'ar' }, 
       biometricEnabled:     { type: Boolean, default: false },
     },
   },

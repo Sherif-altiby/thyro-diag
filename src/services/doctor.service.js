@@ -18,7 +18,7 @@ export const registerDoctor = async ({ fullName, email, password }) => {
 export const loginDoctor = async ({ email, password }) => {
   const doctor = await Doctor.findOne({ email }).select('+passwordHash');
   if (!doctor) {
-    const error = new Error('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+    const error = new Error('  الإلكتروني أو كلمة المرور غير صحيحة');
     error.status = 401;
     throw error;
   }
